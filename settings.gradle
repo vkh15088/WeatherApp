@@ -5,6 +5,20 @@ pluginManagement {
         mavenCentral()
     }
 
+resolutionStrategy {
+    eachPlugin{
+        if (requested.id.id.startsWith("dagger.hilt.android.plugin")) {
+            useModule("com.google.dagger:hilt-android-gradle-plugin:${requested.version}")
+        }
+        if (requested.id.id.startsWith("com.funnydevs.hilt-conductor.plugin")) {
+            useModule("io.github.funnydevs:hilt-conductor-plugin:${requested.version}")
+        }
+        if (requested.id.id.startsWith("com.jakewharton.butterknife")) {
+            useModule("com.jakewharton:butterknife-gradle-plugin:${requested.version}")
+        }
+    }
+}
+
 }
 dependencyResolutionManagement {
 //    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -12,6 +26,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+
 }
 rootProject.name = "WeatherApp"
 include ':app'

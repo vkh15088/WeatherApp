@@ -4,25 +4,28 @@ import com.example.data.impl.weather.WeatherMapper
 import com.example.data.impl.weather.WeatherRepositoryImpl
 import com.example.data.impl.weather.WeatherService
 import com.example.domain.usecases.weather.GetWeatherInfoUseCase
-import com.example.weatherapp.scope.PerScreen
+import com.funnydevs.hilt_conductor.ControllerComponent
+import com.funnydevs.hilt_conductor.annotations.ControllerScoped
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
 import retrofit2.Retrofit
 
+@InstallIn(ControllerComponent::class)
 @Module
 class WeatherModule {
 
     @Provides
-    @PerScreen
+    @ControllerScoped
     fun provideWeatherMapper() = WeatherMapper()
 
     @Provides
-    @PerScreen
+    @ControllerScoped
     fun provideService(retrofit: Retrofit): WeatherService =
         retrofit.create(WeatherService::class.java)
 
     @Provides
-    @PerScreen
+    @ControllerScoped
     fun provideRepository(
         weatherService: WeatherService,
         weatherMapper: WeatherMapper
@@ -32,6 +35,6 @@ class WeatherModule {
 
     //Use Case
     @Provides
-    @PerScreen
+    @ControllerScoped
     fun provideGetWeatherInfoUseCase(repository: WeatherRepositoryImpl) = GetWeatherInfoUseCase(repository)
 }

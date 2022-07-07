@@ -8,16 +8,15 @@ import butterknife.BindView
 import butterknife.OnClick
 import com.example.domain.models.weather.PostInfo
 import com.example.weatherapp.R
-import com.example.weatherapp.application.app.WeatherApp
 import com.example.weatherapp.base.BasePresenter
 import com.example.weatherapp.base.BaseView
 import com.example.weatherapp.constant.AppConstant
-import com.example.weatherapp.feature.weather.injection.DaggerWeatherComponent
-import com.example.weatherapp.feature.weather.injection.WeatherModule
 import com.example.weatherapp.feature.weather.presenter.WeatherPresenterImpl
+import com.funnydevs.hilt_conductor.annotations.ConductorEntryPoint
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
+@ConductorEntryPoint
 class WeatherViewImpl : BaseView(), WeatherView {
 
     @BindView(R.id.editTextLocation)
@@ -61,11 +60,11 @@ class WeatherViewImpl : BaseView(), WeatherView {
     }
 
     override fun injectDependencies() {
-        DaggerWeatherComponent.builder()
-            .appComponent(WeatherApp.component)
-            .weatherModule(WeatherModule())
-            .build()
-            .inject(this)
+//        DaggerWeatherComponent.builder()
+//            .appComponent(WeatherApp.component)
+//            .weatherModule(WeatherModule())
+//            .build()
+//            .inject(this)
     }
 
     override fun getLayoutId(): Int = R.layout.view_main

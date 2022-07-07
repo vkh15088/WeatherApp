@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.ViewGroup
 import com.example.weatherapp.R
-import com.example.weatherapp.feature.weather.view.WeatherViewImpl
 import com.example.weatherapp.base.BaseActivity
+import com.example.weatherapp.feature.weather.view.WeatherViewImpl
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
