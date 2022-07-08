@@ -17,18 +17,11 @@ abstract class BaseFragment(
     val inject by lazy { injectDependencies() }
 
     override fun onAttach(context: Context) {
-
         super.onAttach(context)
-
+        inject
         getPresenter().onStartView(this)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        super.onCreate(savedInstanceState)
-
-        inject
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
