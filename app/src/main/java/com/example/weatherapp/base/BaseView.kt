@@ -46,7 +46,7 @@ abstract class BaseView : Controller() {
         super.onAttach(view)
 
         //Main point to attach View to Presenter
-        getPresenter().onStartView(this)
+//        getPresenter().onStartView(this)
     }
 
     @LayoutRes

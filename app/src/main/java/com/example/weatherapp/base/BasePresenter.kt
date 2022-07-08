@@ -10,7 +10,7 @@ interface BasePresenter {
 
     fun onResumed(){}
 
-    fun onStartView(view: BaseView)
+    fun onStartView(view: BaseFragment)
 
-    fun onBoardView(): BaseView
+    fun onBoardView(): BaseFragment
 }

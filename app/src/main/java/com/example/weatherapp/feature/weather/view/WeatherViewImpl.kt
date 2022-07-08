@@ -9,8 +9,8 @@ import butterknife.OnClick
 import com.example.domain.models.weather.PostInfo
 import com.example.weatherapp.R
 import com.example.weatherapp.application.app.WeatherApp
+import com.example.weatherapp.base.BaseFragment
 import com.example.weatherapp.base.BasePresenter
-import com.example.weatherapp.base.BaseView
 import com.example.weatherapp.constant.AppConstant
 import com.example.weatherapp.feature.weather.injection.DaggerWeatherComponent
 import com.example.weatherapp.feature.weather.injection.WeatherModule
@@ -18,7 +18,7 @@ import com.example.weatherapp.feature.weather.presenter.WeatherPresenterImpl
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
-class WeatherViewImpl : BaseView(), WeatherView {
+class WeatherViewImpl : BaseFragment(R.layout.fragment_weather), WeatherView {
 
     @BindView(R.id.editTextLocation)
     lateinit var edtLocation: EditText
@@ -67,8 +67,6 @@ class WeatherViewImpl : BaseView(), WeatherView {
             .build()
             .inject(this)
     }
-
-    override fun getLayoutId(): Int = R.layout.view_main
 
     override fun getPresenter(): BasePresenter {
         return mPresenterBase

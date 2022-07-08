@@ -1,16 +1,15 @@
 package com.example.weatherapp.base
 
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 
-abstract class BasePresenterImpl<V: BaseView> : BasePresenter {
+abstract class BasePresenterImpl<V : BaseFragment> : BasePresenter {
 
-//    val inject by lazy {injectDependencies()}
+    //    val inject by lazy {injectDependencies()}
     protected val disposable = CompositeDisposable()
     protected var view: V? = null
         private set
 
-    private fun start(view: V){
+    private fun start(view: V) {
         this.view = view
     }
 
@@ -27,11 +26,11 @@ abstract class BasePresenterImpl<V: BaseView> : BasePresenter {
         disposable.clear()
     }
 
-    override fun onStartView(view: BaseView) {
+    override fun onStartView(view: BaseFragment) {
         start(view as V)
     }
 
-    override fun onBoardView(): BaseView {
+    override fun onBoardView(): BaseFragment {
         return view as V
     }
 }
