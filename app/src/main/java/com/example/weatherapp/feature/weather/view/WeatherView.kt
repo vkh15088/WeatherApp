@@ -8,5 +8,4 @@ interface WeatherView {
     fun displayData(post: PostInfo)
     fun getWeatherImage(mIcon: String)
     fun getAPI()
-    fun injectDependencies()
 }

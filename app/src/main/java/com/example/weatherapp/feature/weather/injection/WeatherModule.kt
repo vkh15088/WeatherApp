@@ -4,25 +4,28 @@ import com.example.data.impl.weather.WeatherMapper
 import com.example.data.impl.weather.WeatherRepositoryImpl
 import com.example.data.impl.weather.WeatherService
 import com.example.domain.usecases.weather.GetWeatherInfoUseCase
-import com.example.weatherapp.scope.PerScreen
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.scopes.ActivityScoped
 import retrofit2.Retrofit
 
+@InstallIn(ActivityComponent::class)
 @Module
 class WeatherModule {
 
     @Provides
-    @PerScreen
+    @ActivityScoped
     fun provideWeatherMapper() = WeatherMapper()
 
     @Provides
-    @PerScreen
+    @ActivityScoped
     fun provideService(retrofit: Retrofit): WeatherService =
         retrofit.create(WeatherService::class.java)
 
     @Provides
-    @PerScreen
+    @ActivityScoped
     fun provideRepository(
         weatherService: WeatherService,
         weatherMapper: WeatherMapper
@@ -32,6 +35,6 @@ class WeatherModule {
 
     //Use Case
     @Provides
-    @PerScreen
+    @ActivityScoped
     fun provideGetWeatherInfoUseCase(repository: WeatherRepositoryImpl) = GetWeatherInfoUseCase(repository)
 }

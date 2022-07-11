@@ -8,16 +8,15 @@ import butterknife.BindView
 import butterknife.OnClick
 import com.example.domain.models.weather.PostInfo
 import com.example.weatherapp.R
-import com.example.weatherapp.application.app.WeatherApp
 import com.example.weatherapp.base.BaseFragment
 import com.example.weatherapp.base.BasePresenter
 import com.example.weatherapp.constant.AppConstant
-import com.example.weatherapp.feature.weather.injection.DaggerWeatherComponent
-import com.example.weatherapp.feature.weather.injection.WeatherModule
 import com.example.weatherapp.feature.weather.presenter.WeatherPresenterImpl
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class WeatherViewImpl : BaseFragment(R.layout.fragment_weather), WeatherView {
 
     @BindView(R.id.editTextLocation)
@@ -58,14 +57,6 @@ class WeatherViewImpl : BaseFragment(R.layout.fragment_weather), WeatherView {
 
     override fun getWeatherImage(mIcon: String) {
         Picasso.get().load("${AppConstant.WEATHER_ICON_URL}$mIcon").into(imgWeather)
-    }
-
-    override fun injectDependencies() {
-        DaggerWeatherComponent.builder()
-            .appComponent(WeatherApp.component)
-            .weatherModule(WeatherModule())
-            .build()
-            .inject(this)
     }
 
     override fun getPresenter(): BasePresenter {

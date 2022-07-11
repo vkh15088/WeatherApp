@@ -14,11 +14,9 @@ abstract class BaseFragment(
     private val layoutId: Int
 ) : Fragment() {
 
-    val inject by lazy { injectDependencies() }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        inject
         getPresenter().onStartView(this)
     }
 
@@ -37,7 +35,4 @@ abstract class BaseFragment(
     }
 
     protected abstract fun getPresenter(): BasePresenter
-
-    protected abstract fun injectDependencies()
-
 }

@@ -4,7 +4,6 @@ import io.reactivex.disposables.CompositeDisposable
 
 abstract class BasePresenterImpl<V : BaseFragment> : BasePresenter {
 
-    //    val inject by lazy {injectDependencies()}
     protected val disposable = CompositeDisposable()
     protected var view: V? = null
         private set
@@ -12,11 +11,6 @@ abstract class BasePresenterImpl<V : BaseFragment> : BasePresenter {
     private fun start(view: V) {
         this.view = view
     }
-
-
-//    fun injectDependencies() {
-//        //nothing
-//    }
 
     override fun onStop() {
         this.view = null
