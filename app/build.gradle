@@ -33,6 +33,10 @@ android {
         jvmTarget = '1.8'
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     def dimensDefault = "default"
     productFlavors{
         flavorDimensions dimensDefault
@@ -62,10 +66,6 @@ dependencies {
     //Can use classes in other modules
     implementation project(':data')
     implementation project(':domain')
-
-    //Dagger 2
-//    implementation "com.google.dagger:dagger:$dagger_version"
-//    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     //Dagger Hilt
     implementation "com.google.dagger:hilt-android:$dagger_version"

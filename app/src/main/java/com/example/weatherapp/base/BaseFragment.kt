@@ -6,33 +6,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import butterknife.ButterKnife
+import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment(
+abstract class BaseFragment<B : ViewBinding>(
     @LayoutRes
-    private val layoutId: Int
+    private val layoutRes: Int
 ) : Fragment() {
 
+    protected lateinit var binding: B
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         getPresenter().onStartView(this)
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        findNavController().navigate(R.id.foodListFragment)
         //Init layout to controller
-        val view = inflater.inflate(layoutId, container, false)
-        //Bind view id to a view
-        ButterKnife.bind(this, view)
-        return view
+        binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
+        initView()
+        return binding.root
     }
 
     protected abstract fun getPresenter(): BasePresenter
+    protected abstract fun initView()
 }

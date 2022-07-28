@@ -4,13 +4,13 @@ import com.example.domain.models.weather.GetWeatherRequest
 import com.example.domain.usecases.weather.GetWeatherInfoUseCase
 import com.example.weatherapp.BuildConfig
 import com.example.weatherapp.base.BasePresenterImpl
-import com.example.weatherapp.feature.weather.view.WeatherViewImpl
+import com.example.weatherapp.feature.weather.view.WeatherFragmentImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class WeatherPresenterImpl @Inject constructor(private val getWeatherInfoUseCase: GetWeatherInfoUseCase)
-    : BasePresenterImpl<WeatherViewImpl>() , WeatherPresenter {
+class WeatherPresenterImpl @Inject constructor(private val getWeatherInfoUseCase: GetWeatherInfoUseCase) :
+    BasePresenterImpl<WeatherFragmentImpl>(), WeatherPresenter {
 
     override fun onGetAPI(
         lat: Double,

@@ -2,7 +2,7 @@ package com.example.weatherapp.feature.weather.view
 
 import com.example.domain.models.weather.PostInfo
 
-interface WeatherView {
+interface WeatherFragment {
     fun getAPISuccessful(post: PostInfo)
     fun getAPIFail(message: String)
     fun displayData(post: PostInfo)

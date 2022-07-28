@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/weatherViewImpl"
-        android:name="com.example.weatherapp.feature.weather.view.WeatherViewImpl"
+        android:name="com.example.weatherapp.feature.weather.view.WeatherFragmentImpl"
         android:label="WeatherViewImpl"
         tools:layout="@layout/fragment_weather" />
 </navigation>
