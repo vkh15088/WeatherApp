@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class WeatherFragmentImpl : BaseFragment<FragmentWeatherBinding>(R.layout.fragment_weather),
+class WeatherFragmentImpl :
+    BaseFragment<FragmentWeatherBinding>(R.layout.fragment_weather),
     WeatherFragment {
 
     private val TAG = "WeatherViewImpl123"
@@ -35,9 +36,7 @@ class WeatherFragmentImpl : BaseFragment<FragmentWeatherBinding>(R.layout.fragme
     }
 
     override fun displayData(post: PostInfo) {
-        binding.textViewCountry.text = post.mCountryName
-        binding.textViewTemp.text = post.mMain.temp
-        binding.textViewWeather.text = post.mWeatherList[0].mMain
+        binding.postInfo = post
         getWeatherImage(post.mWeatherList[0].mIcon)
     }
 

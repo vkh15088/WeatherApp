@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--    <data>-->
-    <!--        <variable-->
-    <!--            name="fromViewModel"-->
-    <!--            type="com.example.weatherapp.feature.weather.viewmodel.WeatherViewModel" />-->
-    <!--    </data>-->
+    <data>
+
+        <variable
+            name="postInfo"
+            type="com.example.domain.models.weather.PostInfo" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_fragmentWeather"
@@ -45,7 +46,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="36dp"
             android:layout_marginRight="40dp"
-            android:text="Country"
+            android:text="@{postInfo.MCountryName ?? `Country`, default = Country}"
             android:textColor="#000000"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +60,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="128dp"
             android:layout_marginRight="40dp"
-            android:text="0°C"
+            android:text="@{postInfo.MMain.temp ?? `0°C`, default = `0°C`}"
             android:textColor="#000000"
             android:textSize="60sp"
             android:textStyle="bold"
@@ -86,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="Weather"
+            android:text="@{postInfo.MWeatherList.get(0).MMain ?? `Weather`, default = Weather}"
             android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewWeather"
