@@ -7,25 +7,25 @@ import com.example.domain.usecases.weather.GetWeatherInfoUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.scopes.ActivityScoped
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 
-@InstallIn(ActivityComponent::class)
+//Expected: FragmentComponent ??
+@InstallIn(SingletonComponent::class)
 @Module
 class WeatherModule {
 
     @Provides
-    @ActivityScoped
+//    @FragmentScoped
     fun provideWeatherMapper() = WeatherMapper()
 
     @Provides
-    @ActivityScoped
+//    @FragmentScoped
     fun provideService(retrofit: Retrofit): WeatherService =
         retrofit.create(WeatherService::class.java)
 
     @Provides
-    @ActivityScoped
+//    @FragmentScoped
     fun provideRepository(
         weatherService: WeatherService,
         weatherMapper: WeatherMapper
@@ -35,6 +35,6 @@ class WeatherModule {
 
     //Use Case
     @Provides
-    @ActivityScoped
+//    @FragmentScoped
     fun provideGetWeatherInfoUseCase(repository: WeatherRepositoryImpl) = GetWeatherInfoUseCase(repository)
 }
